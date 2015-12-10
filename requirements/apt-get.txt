@@ -1,0 +1,11 @@
+python-pip
+nginx
+libpq-dev
+python-dev
+graphviz-dev
+pkg-config
+postgresql
+postgresql-contrib
+rabbitmq-server
+subversion
+virtualenvwrapper

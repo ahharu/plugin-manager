@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h2>Update Plugin <b>{{ plugin_name }}</b> on host <b>{{ host_name }}</b></h2>
+    {% crispy form %}
+{% endblock %}

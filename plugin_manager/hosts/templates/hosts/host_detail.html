@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+
+{% block breadcrumb %}
+
+    <h1 style="margin-bottom:30px;">Host {{ object }}
+        <span class="pull-right">
+            <a class="btn btn-warning" href="{% url 'hosts_host_members' object.pk %}">Members Administration</a>
+            <a class="btn btn-primary" href="{% url 'hosts_host_update' object.pk %}">Edit Host</a>
+            <a class="btn btn-danger" href="{% url 'hosts_host_delete' object.pk %}">Delete Host</a>
+        </span>
+    </h1>
+{% endblock breadcrumb %}
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <dl class="dl-horizontal">
+                    <dt>Alias</dt>
+                    <dd>{{ object.alias }}</dd>
+                    <dt>IP/Domain Name</dt>
+                    <dd>{{ object.name }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-primary" href="{% url 'hosts_host_plugin_install' object.pk %}">Install Plugin From Jenkins Repository</a>
+            <a class="btn btn-primary" href="{% url 'hosts_host_plugin_upload' object.pk %}">Upload Plugin</a>
+        </div>
+    </div>
+
+    <br><br>
+
+    {% render_table table %}
+
+{% endblock content %}

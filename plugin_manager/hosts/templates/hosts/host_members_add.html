@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'hosts_host_list' %}">HOSTS</a></li>
+    <li><a href="{% url 'hosts_host_detail' host.pk %}">{{ host }}</a></li>
+    <li class="active">Members Administration</li>
+</ol>
+{% endblock breadcrumb %}
+
+
+{% block content %}
+    <h1>Add Member</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well clearfix">
+                    <h4>
+                        {% crispy form %}
+                    </h4>
+            </div>
+            {% if show_table %}
+                {% render_table members_table %}
+            {% endif %}
+        </div>
+    </div>
+
+    <input type="hidden" id="addUrl" value="{% url 'hosts_host_member_add_ajax' host.pk host.pk %}">
+
+    {% addtoblock "js" %}
+        <script>
+            var host_id = {{ host.pk }};
+         </script>
+        {% block detail_scripts %}
+            <script src="{% static 'hosts/js/host_member_add.js' %}"></script>
+        {% endblock %}
+    {% endaddtoblock %}
+
+
+{% endblock content%}

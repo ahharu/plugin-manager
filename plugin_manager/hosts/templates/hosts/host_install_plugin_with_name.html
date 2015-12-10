@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% block content %}
+    <h2>Update Plugin <b>{{ plugin_name }}</b> on host <b>{{ host_name }}</b></h2>
+    <input type="hidden" id="ajaxUrl" value="{% url 'hosts_getversions_by_pluginname_noparams' %}">
+    {% crispy form %}
+
+
+    {% addtoblock "js" %}
+        {% block detail_scripts %}
+            <script src="{% static 'hosts/js/host_install_plugin.js' %}"></script>
+        {% endblock %}
+    {% endaddtoblock %}
+
+{% endblock %}

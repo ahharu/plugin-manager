@@ -1,0 +1,13 @@
+include setup.py README.rst MANIFEST.in LICENSE
+
+recursive-include plugin_manager/accounts/templates *
+recursive-include plugin_manager/hosts/templates *
+recursive-include plugin_manager/projects/templates *
+recursive-include plugin_manager/projects/static *
+
+recursive-include plugin_manager/core/fixtures *
+recursive-include plugin_manager/core/static *
+recursive-include plugin_manager/core/templates *
+
+recursive-include plugin_manager/web_hooks/static *
+recursive-include plugin_manager/web_hooks/templates *

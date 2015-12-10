@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Remove User?</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>Are you sure you want to remove the user {{ object.user }}?</p>
+        <input type="submit" value="Yes, I'm Sure." class="btn btn-danger"/>
+        <input type="submit" name="cancel" value="No, I'm not sure" class="btn btn-warning" />
+    </form>
+{% endblock content %}
